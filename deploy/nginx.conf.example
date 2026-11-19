@@ -1,0 +1,33 @@
+# Apartman Yönetim Sistemi — Nginx Sunucu Yapılandırma Örneği
+# Not: Apache / LiteSpeed sunucularda .htaccess otomatik çalışır;
+# Nginx kullanılan VPS / Cloud sunucularda aşağıdaki kuralları server {} bloğuna ekleyin.
+
+server {
+    listen 80;
+    server_name apartman.ornekalanadi.com;
+    root /var/www/apartman;
+    index index.php;
+
+    client_max_body_size 8M;
+
+    # Hassas dosya ve dizinlere doğrudan web erişimini engelle
+    location ~ ^/(includes|uploads|deploy)/ {
+        deny all;
+        return 403;
+    }
+
+    location ~* ^(\.env|\.git|config(\.local)?\.php|cli_kurulum\.php|.*\.(sql|md|kilit|log|sh))$ {
+        deny all;
+        return 403;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+}

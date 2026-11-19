@@ -1,0 +1,5 @@
+Options -Indexes
+DirectoryIndex index.php
+<FilesMatch "^(\.env|\.git|config(\.local)?\.php|cli_kurulum\.php|.*\.(sql|md|kilit|log|sh))$">
+  Require all denied
+</FilesMatch>

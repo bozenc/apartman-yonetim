@@ -1,0 +1,10 @@
+{
+  "name": "Apartman Yönetim Sistemi",
+  "short_name": "Apartman",
+  "description": "Aidat, tahsilat, gelir-gider ve apartman yönetim paneli",
+  "start_url": "./index.php",
+  "display": "standalone",
+  "background_color": "#f4f6fb",
+  "theme_color": "#4f46e5",
+  "lang": "tr"
+}

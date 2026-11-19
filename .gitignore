@@ -1,0 +1,19 @@
+# Yerel yapılandırma ve kurulum kilit dosyaları
+config.local.php
+kurulum.kilit
+.env
+.env.*
+
+# Yüklenen kullanıcı dosyaları / dekontlar (.htaccess hariç)
+uploads/*
+!uploads/.htaccess
+uploads/dekontlar/*
+!uploads/dekontlar/.htaccess
+
+# İşletim sistemi ve editör dosyaları
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log
